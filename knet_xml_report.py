@@ -8,6 +8,21 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+from  time import time
+
+def timeFormat(secs):
+    """ Formats Seconds to relevant time interval"""
+
+    secs = float("{0:.2f}".format(secs))
+    days = secs//86400
+    hours = (secs - days*86400)//3600
+    minutes = (secs - days*86400 - hours*3600)//60
+    seconds = secs - days*86400 - hours*3600 - minutes*60
+    time = ("{0} day{1}, ".format(days, "s" if days!=1 else "") if days else "") + \
+    ("{0} hour{1} ".format(hours, "s" if hours!=1 else "") if hours else "") + \
+    ("{0} minute{1} ".format(minutes, "s" if minutes!=1 else "") if minutes else "") + \
+    ("{0} second{1} ".format(seconds, "s" if seconds!=1 else "") if seconds else "")
+    return time
 
 def createFile(path):
     """ Creates the file path if it doesn't exist"""
@@ -42,9 +57,7 @@ def metaDataListAppender(metaDict):
     for key, val in meta_count_dict.items():
         meta_name_list.append(key)
         meta_counts_list.append(val)
-
     meta_counts_list = list(map(int, meta_counts_list))
-
     return meta_counts_list, meta_name_list
 
 def dataframeCreatorWriter(meta_name_list, meta_name_string, meta_counts_list, df_out_str):
@@ -99,6 +112,7 @@ output = output.rstrip("/") if output.endswith('/') else output
 output = output.replace("\\", "") if output.find("\\") else output
 
 try:
+    start_time = time()
     folder_list = [f"{output}/barplots", f"{output}/dataframes"]
     [createFile(folder) for folder in folder_list]
     pretty_print_xml(xml=input, output = f"{output}/report.xml")
@@ -167,5 +181,7 @@ try:
                 x_size=30, y_size=10, title='Relationship counts',
                 xlabel='Semantic Motif', output_name='relationships_counts_barplt', label_height=10, meta_names_list=metaRS_name_list)
 
+        fd.close()
+        print(f"\nFinished outputting graphs and dataframes. Time taken to do this was: {timeFormat(time()-start_time)} !\n")
 except:
         print(f"\033[91mPlease provide a valid xml output file!\n")
