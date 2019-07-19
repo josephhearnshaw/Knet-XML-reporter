@@ -1,5 +1,5 @@
 # Knet-XML-reporter
-Reports metadata in figures and formatted files for ONDEX output. 
+Reports metadata in bar charts and formatted data frame outputs for ONDEX report output (plugin required to obtain this output). 
 
 # Requirements 
 
@@ -23,4 +23,4 @@ Example usage:
 
 # Future plans
 
-TODO - make filtering optional and add options to set graph sizes and what to filter by. Also refactor the figure plotting bodies as it's repetitive. 
+TODO - make filtering optional and add options to set graph sizes and what to filter by. Booleans will be added for options. 
