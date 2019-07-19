@@ -12,6 +12,7 @@ The following modules are also required to be installed within your Py environme
 * [pandas](https://pypi.org/project/pandas/)
 * [numpy](https://pypi.org/project/numpy/)
 * [matplotlib](https://pypi.org/project/matplotlib/)
+* [time](https://pypi.org/project/time/)
 
 
 # Example use
