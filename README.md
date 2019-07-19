@@ -19,7 +19,7 @@ The following modules are also required to be installed within your Py environme
 
 Example usage: 
 
-`python3 -in=/path/report.xml -out=/path/output_reports`
+`python3 knet_xml_report.py -in=/path/report.xml -out=/path/output_reports`
 
 # Future plans
 
