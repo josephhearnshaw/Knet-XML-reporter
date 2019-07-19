@@ -90,9 +90,6 @@ input = args['input_file']
 output = args['output_dir']
 output = output.rstrip("/") if output.endswith('/') else output
 output = output.replace("\\", "") if output.find("\\") else output
-# Man test ####
-#input = "/home/joseph/Desktop/mouse_TM_report.xml"
-#output = "/home/joseph/Desktop/report_test/"
 
 if input is not None:
     if input.endswith(".xml"):
