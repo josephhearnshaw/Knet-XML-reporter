@@ -9,17 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-class bcolours:
-    """ Useful print outs for the console - colours et al., """
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
 def createFile(path):
     """ Creates the file path if it doesn't exist"""
     if os.path.exists(path):
@@ -95,7 +84,6 @@ def plotFig(meta_counts_list, series_counts_pd, x_size, y_size, title, xlabel, o
                 ha='center', va='bottom')
     fig.savefig(f'{output}/barplots/{output_name}.png')
 
-
 """ User Args """
 parser = argparse.ArgumentParser(
     description="This script will perform read through the report output from Ondex and provide statistical outputs\n")
@@ -109,9 +97,6 @@ input = args['input_file']
 output = args['output_dir']
 output = output.rstrip("/") if output.endswith('/') else output
 output = output.replace("\\", "") if output.find("\\") else output
-# Man test ####
-#input = "/home/joseph/Desktop/mouse_TM_report.xml"
-#output = "/home/joseph/Desktop/report_test/"
 
 try:
     folder_list = [f"{output}/barplots", f"{output}/dataframes"]
@@ -126,8 +111,8 @@ try:
         tot_concept_count = doc['info']['general']['numberOfConcepts']
         tot_relationship_count = doc['info']['general']['numberOfRelations']
 
-        print(f"Total number of concept counts is : {bcolours.FAIL}{tot_concept_count}{bcolours.ENDC},"
-              f" the total number of relationship counts is {bcolours.FAIL}{tot_relationship_count}{bcolours.ENDC}\n\n")
+        print(f"Total number of concept counts is : \033[91m {tot_concept_count}\033[0m,"
+              f" the total number of relationship counts is \033[91m{tot_relationship_count}\033[0m\n\n")
 
         """ MetaData Dicts """
         metaCC_dict = doc['info']['metadata']['conceptClasses']['conceptClass']
@@ -183,4 +168,4 @@ try:
                 xlabel='Semantic Motif', output_name='relationships_counts_barplt', label_height=10, meta_names_list=metaRS_name_list)
 
 except:
-        print(f"{bcolours.FAIL}Please provide a valid xml output file!\n")
+        print(f"\033[91mPlease provide a valid xml output file!\n")
