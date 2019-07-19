@@ -1,5 +1,5 @@
 # Knet-XML-reporter
-Reports metadata in bar charts and formatted data frame outputs for ONDEX report output (plugin required to obtain this output). 
+Reports metadata in bar charts and formatted data frame outputs for [ONDEX-knet-builder](https://github.com/Rothamsted/ondex-knet-builder) report output (plugin required to obtain this output). 
 
 # Requirements 
 
