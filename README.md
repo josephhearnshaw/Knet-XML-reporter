@@ -23,6 +23,10 @@ Example usage:
 
 Note: It's optional to provide the Semantic Motifs file. 
 
+For the help menu, execute the following:
+
+`python3 knet_xml_report.py --help`
+
 # Future plans
 
 TODO - make filtering optional and add options to set graph sizes and what to filter by. 
