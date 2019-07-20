@@ -36,7 +36,8 @@ def createFile(path):
     if os.path.exists(path):
         pass
     else:
-        os.makedir(path)
+        print("Making directory\n")
+        os.mkdir(path)
 
 
 def pretty_print_xml(xml, output):
@@ -161,13 +162,13 @@ parser.add_argument(
 # Initiate the arguments
 args = vars(parser.parse_args())
 
-input, input_sm, output = args['xml_input_file'], args['output_dir'], args['semantics_input_file']
+input, output, input_sm = args['xml_input_file'], args['output_dir'], args['semantics_input_file']
 output = output.rstrip("/") if output.endswith('/') else output
 output = output.replace("\\", "") if output.find("\\") else output
 
 try:
     start_time = time()
-    folder_list = [f"{output}/barplots", f"{output}/dataframes"]
+    folder_list = [output, f"{output}/barplots", f"{output}/dataframes"]
     [createFile(folder) for folder in folder_list]
     pretty_print_xml(xml=input, output=f"{output}/report.xml")
 
@@ -265,5 +266,5 @@ try:
 
         fd.close()
         print(f"\nFinished outputting graphs and dataframes. Time taken to do this was: {timeFormat(time()-start_time)}!\n")
-except:
-    print(f"\033[91mPlease provide a valid xml output file!\n")
+except Exception as exc:
+    print(f"\033[91mPlease provide a valid xml output file!\nError was: {exc}")
