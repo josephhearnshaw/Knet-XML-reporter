@@ -158,7 +158,10 @@ parser.add_argument(
 parser.add_argument(
     '-out', '--output_dir', help='Specify the output of the stats.', required=True)
 
-input, output, input_sm = args['xml_input_file'], args['output_dir'], args['semantics_input_file']
+# Initiate the arguments
+args = vars(parser.parse_args())
+
+input, input_sm, output = args['xml_input_file'], args['output_dir'], args['semantics_input_file']
 output = output.rstrip("/") if output.endswith('/') else output
 output = output.replace("\\", "") if output.find("\\") else output
 
