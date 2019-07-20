@@ -19,8 +19,10 @@ The following modules are also required to be installed within your Py environme
 
 Example usage: 
 
-`python3 knet_xml_report.py -in=/path/report.xml -out=/path/output_reports`
+`python3 knet_xml_report.py -xml=/path/report.xml -sm=/path/SemanticMotifs.txt -out=/path/output_reports`
+
+Note: It's optional to provide the Semantic Motifs file. 
 
 # Future plans
 
-TODO - make filtering optional and add options to set graph sizes and what to filter by. Booleans will be added for options. 
+TODO - make filtering optional and add options to set graph sizes and what to filter by. 
